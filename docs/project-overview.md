@@ -1,8 +1,14 @@
-# AI Linechatbotプロジェクト概要
+# LINE AIAGENT プロジェクト概要
 
 ## 1. プロジェクト構成
 
-### 1.1 アーキテクチャ
+### 1.1 コンセプト
+- LINEプラットフォームを活用したAIアシスタント
+- 日本語ネイティブな対話インターフェース
+- シンプルで直感的な操作性
+- 効率的なLINE運用管理
+
+### 1.2 アーキテクチャ
 ```mermaid
 graph TD
     A[Next.js Frontend] --> B[API Routes]
