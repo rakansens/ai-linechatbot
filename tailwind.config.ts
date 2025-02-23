@@ -9,7 +9,7 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      sans: ['geist'],
+      sans: ['Noto Sans JP', 'sans-serif'],
       mono: ['geist-mono'],
     },
     extend: {
@@ -19,6 +19,20 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        line: {
+          green: '#00B900',
+          dark: '#35353A',
+          gray: '#8E8E93',
+          light: '#F7F7F7',
+          white: '#FFFFFF',
+          blue: '#00B8F5',
+        },
+        message: {
+          user: '#00B900',
+          assistant: '#F7F7F7',
+          userText: '#FFFFFF',
+          assistantText: '#35353A',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
