@@ -33,6 +33,7 @@ import { textArtifact } from '@/artifacts/text/client';
 import equal from 'fast-deep-equal';
 
 import { lineArtifact } from '@/artifacts/line/client';
+import { lineMessagingArtifact } from '@/artifacts/line/messaging/client';
 
 export const artifactDefinitions = [
   textArtifact,
@@ -40,9 +41,10 @@ export const artifactDefinitions = [
   imageArtifact,
   sheetArtifact,
   lineArtifact,
+  lineMessagingArtifact,
 ];
 
-export type ArtifactKind = 'text' | 'code' | 'image' | 'sheet' | 'line';
+export type ArtifactKind = 'text' | 'code' | 'image' | 'sheet' | 'line' | 'line-messaging';
 
 export interface ArtifactContentProps {
   content: string;
@@ -259,12 +261,6 @@ function PureArtifact({
   };
 
   const [isToolbarVisible, setIsToolbarVisible] = useState(false);
-
-  /*
-   * NOTE: if there are no documents, or if
-   * the documents are being fetched, then
-   * we mark it as the current version.
-   */
 
   const isCurrentVersion =
     documents && documents.length > 0

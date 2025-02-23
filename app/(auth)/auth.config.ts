@@ -11,6 +11,11 @@ export const authConfig = {
   ],
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
+      // 開発環境では認証をスキップ
+      if (process.env.NODE_ENV === 'development') {
+        return true;
+      }
+
       const isLoggedIn = !!auth?.user;
       const isOnChat = nextUrl.pathname.startsWith('/');
       const isOnRegister = nextUrl.pathname.startsWith('/register');
