@@ -32,13 +32,41 @@ import { sheetArtifact } from '@/artifacts/sheet/client';
 import { textArtifact } from '@/artifacts/text/client';
 import equal from 'fast-deep-equal';
 
+import { lineArtifact } from '@/artifacts/line/client';
+
 export const artifactDefinitions = [
   textArtifact,
   codeArtifact,
   imageArtifact,
   sheetArtifact,
+  lineArtifact,
 ];
-export type ArtifactKind = (typeof artifactDefinitions)[number]['kind'];
+
+export type ArtifactKind = 'text' | 'code' | 'image' | 'sheet' | 'line';
+
+export interface ArtifactContentProps {
+  content: string;
+  onSaveContent: (content: string, debounce: boolean) => void;
+  isCurrentVersion: boolean;
+  mode?: 'edit' | 'diff';
+  status?: 'streaming' | 'idle';
+  currentVersionIndex?: number;
+  suggestions?: Array<any>;
+  isInline?: boolean;
+  getDocumentContentById?: (index: number) => string;
+  isLoading?: boolean;
+  metadata?: any;
+  setMetadata?: (metadata: any) => void;
+}
+
+export interface ArtifactDefinition {
+  kind: ArtifactKind;
+  name: string;
+  description: string;
+  icon: string;
+  content: React.ComponentType<ArtifactContentProps>;
+  initialize?: (props: { documentId: string; setMetadata: (metadata: any) => void }) => void;
+}
 
 export interface UIArtifact {
   title: string;
